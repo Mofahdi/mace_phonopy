@@ -4,7 +4,8 @@ code to generate 2nd order interatomic force constants from phonopy using mace M
 ## Usage
 you can test the code by running the following:</br>
 
-<code>python mace_phonopy_run.py \
+<code>
+python mace_phonopy_run.py \
 	--atoms_path='POSCAR' \
 	--supercell-dims=222 \
 	--disp=0.02 \
