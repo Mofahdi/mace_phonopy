@@ -45,7 +45,7 @@ the code is tested on the following packages and versions:
 <code>e3nn=0.4.4</code>
 <code>mace-torch=0.3.6</code>
 <code>phonopy=2.20.0</code>
-Those packages can probably work with different versions
+</br>The code can probably work with different versions of the above packages
 
 ## Credit
 * Please consider reading my published work in Google Scholar using this [link](https://scholar.google.com/citations?user=5tkWy4AAAAAJ&hl=en&oi=ao) thank you :)
