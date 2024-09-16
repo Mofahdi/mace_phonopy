@@ -40,7 +40,7 @@ the code will generate these files: </br>
 **--stability_criteria**: frequency stability threshold. If one frequency is less than that value, "unstable" is written on **stability** file (-0.1 by default)\
 **--output_ph_band**: output phonon dispersion plot in file **phonopy_bands_dos.png**(True by default)\
 
-## Installation
+## Required Packages
 the code is tested on the following packages and versions:
 <code>torch=2.0.1</code>
 <code>ase=3.23.0</code>
