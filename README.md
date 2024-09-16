@@ -4,16 +4,17 @@ code to generate 2nd order interatomic force constants from phonopy using mace M
 ## Usage
 you can test the code by running the following:</br>
 
-<code>python chgnet_phonopy_run.py \
+<code>python mace_phonopy_run.py \
 	--atoms_path='POSCAR' \
-	--relax=True \
 	--supercell-dims=222 \
 	--disp=0.02 \
 	--num_rand_disp=None \
 	--output_disp=True \
 	--pretrained_model=True \
+	--dtype=float64 \
+	--device=cpu \
 	--model_path=None \
-	--stability_criteria=-0.1 \
+	--stability_criteria=-.1 \
 	--output_ph_band=True
 </code>
 
@@ -31,6 +32,8 @@ the code will generate these files: </br>
 **--num_rand_disp**: # of random displacements. you might have to install alm to produce 2nd order IFCs (None by default) \
 **--output_disp**: whether to output the displacements in POSCAR format or not (True by default)\
 **--pretrained_model**: whether to use the pretrained chgnet model (True by default)\
+**--dtype**: you can either select 'float64' or 'float32' ('float64' by default)\
+**--device**: you can either select 'cpu', 'cuda', or 'mps' ('cpu' by default)\
 **--model_path**: new chgnet model path if the pretrained model is not used (None by default)\
 **--stability_criteria**: frequency stability threshold. If one frequency is less than that value, "unstable" is written on **stability** file (-0.1 by default)\
 **--output_ph_band**: output phonon dispersion plot in file **phonopy_bands_dos.png**(True by default)\
