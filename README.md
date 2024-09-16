@@ -25,6 +25,9 @@ the code will generate these files: </br>
 4- **orig_band.conf**: file that has the q-points or phonon wavevectors that were used to get the frequencies to output the **stability** file</br>
 5- **SPOSCAR_###**: supercell of the input structure where # represents the supercell dimension</br>
 
+</br></br>
+**Note:** you have to put both files "mace_phonopy_class.py" and "mace_phonopy_run.py" in the same path since "mace_phonopy_run.py" inherits classes from "mace_phonopy_class.py"
+
 ## Args Explanation
 **--atoms_path**: structure path ('./POSCAR' by default) \
 **--supercell-dims**: supercell dimensions (222 by default)\
