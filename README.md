@@ -19,7 +19,7 @@ python mace_phonopy_run.py \
 	--output_ph_band=True
 </code>
 
-the code will generate these files: </br>
+</br>the code will generate these files: </br>
 1-**FORCE_CONSTANTS**: 2nd order IFCs in phonopy format</br>
 2-**stability**: it shows the words "stable" or "unstable" based on the "stability_criteria" argument</br>
 3- **band.conf**: file that can be used later by phonopy to plot the phonon dispersion</br>
