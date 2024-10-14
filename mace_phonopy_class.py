@@ -26,6 +26,7 @@ from ase import Atoms as AseAtoms
 from phonopy.structure.atoms import Atoms as PhonopyAtoms
 
 
+''' ase atoms to phonopy atoms '''
 def ase_to_phonopy_atoms(ase_atoms, pbc=True):
 	return PhonopyAtoms(
 			symbols=ase_atoms.symbols,
@@ -34,6 +35,7 @@ def ase_to_phonopy_atoms(ase_atoms, pbc=True):
 			cell=ase_atoms.get_cell(),
 			)
 
+''' phonopy atoms to ase atoms '''
 def phonopy_to_ase_atoms(phonopy_atoms, pbc=True):
 	return AseAtoms(
 		symbols=phonopy_atoms.symbols,
@@ -42,7 +44,7 @@ def phonopy_to_ase_atoms(phonopy_atoms, pbc=True):
 		cell=phonopy_atoms.cell,
 		)
 
-
+''' mace phonopy object '''
 class mace_phonopy:
 	def __init__(
 			self, 
@@ -60,7 +62,8 @@ class mace_phonopy:
 		# create supercell attribute in object through the supercell function
 		self.supercell=self.create_supercell()	
 
-	# function to create supercell 
+	
+	''' function to create supercell '''
 	def create_supercell(
 			self
 			):
@@ -70,7 +73,8 @@ class mace_phonopy:
 		new_structure.to(filename=supercell_name)
 		return new_structure
 
-	# generate kpoints 
+	
+	''' generate kpoints '''
 	def get_jarvis_kpoints(
 				self, 
 				line_density=20,
@@ -79,7 +83,7 @@ class mace_phonopy:
 		return kpoints
 
 
-	# function to save object using pickle
+	''' function to save object using pickle '''
 	def save_to_pickle(
 				self, 
 				filename='mace_phonopy_attrs.pkl',
@@ -89,7 +93,7 @@ class mace_phonopy:
 			pickle.dump(self, outp, pickle.HIGHEST_PROTOCOL)
 
 
-	# function to generate displacements and 2nd order IFC. The IFC is saved as object attribute
+	''' function to generate displacements and 2nd order IFC. The IFC is saved as object attribute '''
 	def get_phonon_fc2(
 				self, 
 				displacement=0.01, 
@@ -105,8 +109,6 @@ class mace_phonopy:
 			#chgnet = CHGNet.load()
 			calc = mace_mp(model="large", dispersion=False, default_dtype=default_dtype, device='cpu')
 		else:
-			#PATH='bestF_epoch29_e4_f21_sNA_mNA.pth.tar'
-			#chgnet=CHGNet.from_file(trained_path)
 			calc = MACECalculator(model_path=trained_path, model_paths=None, device=device)
 
 		phonon = Phonopy(self.phonopy_structure, [[self.supercell_dims[0], 0, 0], [0, self.supercell_dims[1], 0], [0, 0, self.supercell_dims[2]]])
@@ -139,7 +141,8 @@ class mace_phonopy:
 		# save the phonon attribute to the object
 		self.phonon=phonon
 
-	# method to output the phonon dispersion and DOS
+	
+	''' method to output the phonon dispersion and DOS '''
 	def get_phonon_dos_bs(
 				self, 
 				line_density=30, 
@@ -261,7 +264,7 @@ class mace_phonopy:
 			plt.savefig(os.path.join(self.path, phonopy_bands_dos_figname), dpi=dpi)
 			plt.close()
 
-	# 
+	''' generate band.conf files to run produce phonon dispersion ''' 
 	def generate_bands_conf(
 		self,
 		filename="orig_band.conf",
