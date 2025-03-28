@@ -106,8 +106,7 @@ class mace_phonopy:
 				trained_path='./MACE.model',
 				):
 		if pretrained_model:
-			#chgnet = CHGNet.load()
-			calc = mace_mp(model="large", dispersion=False, default_dtype=default_dtype, device=device)
+			calc = mace_mp(model="medium-mpa-0", dispersion=False, default_dtype=default_dtype, device=device)
 		else:
 			calc = MACECalculator(model_path=trained_path, model_paths=None, device=device)
 
